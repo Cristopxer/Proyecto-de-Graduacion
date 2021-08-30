@@ -1,0 +1,5 @@
+Config\Conn.class
+Controller\srvLog.class
+Model\User.class
+Interface\Log.class
+ModelDAO\LoginDAO.class
