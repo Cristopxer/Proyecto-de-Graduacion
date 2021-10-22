@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import Model.Chart;
 import Model.User;
+import ModelDAO.ChartDAO;
 import ModelDAO.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -46,10 +48,13 @@ public class srvLog extends HttpServlet {
             usr = dao.login(request.getParameter("txtUser"), request.getParameter("txtPass"));
             if (usr != null) {
                 if (usr.getRoleName() != null) {
+                    ChartDAO ch = new ChartDAO();
+                    Chart c = ch.Chart();
                     HttpSession session;
                     session = request.getSession();
                     session.setAttribute("user", usr);
                     session.setAttribute("role", usr.getRoleName());
+                    request.setAttribute("charts", c);
                     request.setAttribute("msj", "Bienvenido");
                     switch (usr.getRoleName()) {
                         case "ADMINISTRADOR":
