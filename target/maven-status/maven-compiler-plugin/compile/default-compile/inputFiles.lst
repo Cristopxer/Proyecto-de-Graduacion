@@ -1,5 +1,13 @@
 D:\Documents\NetBeansProjects\PG\src\main\java\Controller\srvLog.java
 D:\Documents\NetBeansProjects\PG\src\main\java\Interface\Log.java
-D:\Documents\NetBeansProjects\PG\src\main\java\Model\User.java
 D:\Documents\NetBeansProjects\PG\src\main\java\Config\Conn.java
+D:\Documents\NetBeansProjects\PG\src\main\java\ModelDAO\ChartDAO.java
+D:\Documents\NetBeansProjects\PG\src\main\java\ModelDAO\DetectionDAO.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Model\User.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Interface\Char.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Model\Chart.java
+D:\Documents\NetBeansProjects\PG\src\main\java\ModelDAO\test.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Model\Detection.java
 D:\Documents\NetBeansProjects\PG\src\main\java\ModelDAO\LoginDAO.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Interface\Detect.java
+D:\Documents\NetBeansProjects\PG\src\main\java\Controller\srvReports.java

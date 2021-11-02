@@ -10,6 +10,9 @@ package Model;
  * @author Topher
  */
 public class Detection {
+
+    private String id;
+
     private String date;
     private String store;
     private String camera;
@@ -18,7 +21,14 @@ public class Detection {
     public Detection() {
     }
 
-    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getDate() {
         return date;
     }
@@ -50,5 +60,5 @@ public class Detection {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
-    
+
 }

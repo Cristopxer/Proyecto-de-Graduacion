@@ -34,6 +34,7 @@ public class DetectionDAO implements Detect {
             rs = st.executeQuery();
             while (rs.next()) {
                 Detection d = new Detection();
+                d.setId(rs.getString("ID"));
                 d.setDate(rs.getString("CREATED_AT"));
                 d.setStore(rs.getString("STORE_NAME"));
                 d.setCamera(rs.getString("CAMERA_NUMBER"));

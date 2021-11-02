@@ -42,16 +42,20 @@ public class srvLog extends HttpServlet {
         String view = "";
         String action = request.getParameter("action");
         view = login;
-        if (action.equalsIgnoreCase("login")) {
+        if (action.equalsIgnoreCase("login") || action.equalsIgnoreCase("home")) {
+            HttpSession session;
+            session = request.getSession();
             User usr = new User();
-            LoginDAO dao = new LoginDAO();
-            usr = dao.login(request.getParameter("txtUser"), request.getParameter("txtPass"));
+            if (action.equalsIgnoreCase("login")) {
+                LoginDAO dao = new LoginDAO();
+                usr = dao.login(request.getParameter("txtUser"), request.getParameter("txtPass"));
+            } else {
+                usr = (User) session.getAttribute("user");
+            }
             if (usr != null) {
                 if (usr.getRoleName() != null) {
                     ChartDAO ch = new ChartDAO();
                     Chart c = ch.Chart();
-                    HttpSession session;
-                    session = request.getSession();
                     session.setAttribute("user", usr);
                     session.setAttribute("role", usr.getRoleName());
                     request.setAttribute("charts", c);
