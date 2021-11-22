@@ -23,18 +23,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-        <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-        <title>Incidentes anual</title>
+        <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+        <script src="https://printjs-4de6.kxcdn.com/print.min.css"></script>    
+        <title>Incidentes Bodegas</title>
     </head>
     <body>
-        <div id='contain'>
+        <div id='content'>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
                 <div class="container-fluid">
                     <button
@@ -55,6 +49,25 @@
                             width="175"
                             height="50"
                             /></a>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="srvLog?action=home">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="srvReports">Reportes</a>
+                            </li>
+                            <% if (session.getAttribute("role").equals("ADMINISTRADOR")) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Usuarios</a>
+                            </li>
+                            <% } %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="srvLog?action=logout">Salir</a>
+                            </li>
+                        </ul>
+                        <span class="navbar-text">Bienvenido - ${user.userName} </span>          
+                    </div>
                 </div>
             </nav>
             <div class='container'>
@@ -63,13 +76,13 @@
                         <h2>Inicidentes Bodegas</h2>
                     </div>        
                 </div>
-                <!--        <div class="row">
-                            <div class="col-sm-12 d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-sm-4 offset-4">
                                 <div>
-                                    <canvas id="store_detections" width="800px"></canvas>
+                                    <canvas id="store_detections" width="100px"></canvas>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                 <%        Chart ct = (Chart) request.getAttribute("chart");
                     String[] stores = ct.getStoreName().replace("'", "").split(",");
                     ArrayList<Detection> dt = (ArrayList<Detection>) request.getAttribute("detectionList");
@@ -97,7 +110,7 @@
                                 <td><%= detect.getCamera()%></td>                                
                             </tr>   
                             <%      }
-                            }%>
+                                }%>
 
                         </table>
                     </div>        
@@ -106,25 +119,9 @@
             </div>
         </div>
         <div class="container">
-            <button type="button" class='btn btn-primary' onclick="generatePDF()">Descargar</button>
+            <button type="button" class='btn btn-primary' onclick="printJS({printable: 'content', type: 'html', header: 'Reporte de incidentes bodega', css: 'bootstrap/css/bootstrap.min.css'})">Descargar</button>
         </div>
     </body>
-    <script>
-        function generatePDF() {
-            var opt = {
-    //            margin: 1,
-                filename: 'myfile.pdf',
-                html2canvas: {scale: 0.9},
-                jsPDF: {unit: 'in', format: 'letter', orientation: 'portrait'}
-            };
-            const element = document.getElementById("contain");
-
-            html2pdf()
-                    .set(opt)
-                    .from(element)
-                    .save();
-        }
-    </script>
     <script>
         const data_donut = {
             labels: [${chart.getStoreName()}],

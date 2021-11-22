@@ -118,8 +118,8 @@
             String[] months = chart.getMonthDetection().split(",");
             String[] detections = chart.getMonthlyDetection().split(",");
             String[] dataChart = "0,0,0,0,0,0,0,0,0,0,0,0".split(",");
-            for (String dx : months) {
-                Integer count = 0;
+            Integer count = 0;
+            for (String dx : months) {                
                 dataChart[Integer.parseInt(dx) - 1] = detections[count];
                 count++;
             }

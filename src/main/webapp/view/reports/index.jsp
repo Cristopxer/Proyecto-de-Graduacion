@@ -74,10 +74,10 @@
             </div>
             <div class="row mt-4">
                 <div class="col-sm-12 d-flex justify-content-center">
-                    <a href="srvReports?action=year" target="blank"><button type="button" class="btn btn-outline-primary btn-lg">
+                    <a href="srvReports?action=year"><button type="button" class="btn btn-outline-primary btn-lg">
                             Incidentes año
                         </button></a>
-                    <a href="srvReports?action=store" target="blank"><button type="button" class="btn btn-outline-primary btn-lg">
+                    <a href="srvReports?action=store"><button type="button" class="btn btn-outline-primary btn-lg">
                             Incidentes bodega
                         </button></a>
                 </div>
@@ -116,7 +116,7 @@
                                 <td><%= detect.getDate().split(" ")[1]%></td>
                                 <td><%= detect.getStore()%></td>
                                 <td><%= detect.getCamera()%></td>
-                                <td><span><a href="srvReports?id=<%= detect.getId()%>" target="blank"><img src="img/report_icon.png"/></a></span></td>                                              
+                                <td><span><a href="srvReports?id=<%= detect.getId()%>"><img src="img/report_icon.png"/></a></span></td>                                              
                             </tr>           
                             <% }%>
                         </tbody>

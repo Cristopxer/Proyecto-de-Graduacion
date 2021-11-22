@@ -1,5 +1,13 @@
+ModelDAO\test.class
 Interface\Log.class
+Model\Detection.class
 Config\Conn.class
 Controller\srvLog.class
 ModelDAO\LoginDAO.class
+Interface\Detect.class
+ModelDAO\ChartDAO.class
+Model\Chart.class
+Controller\srvReports.class
 Model\User.class
+ModelDAO\DetectionDAO.class
+Interface\Char.class

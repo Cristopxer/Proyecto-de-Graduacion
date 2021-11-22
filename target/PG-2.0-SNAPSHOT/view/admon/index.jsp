@@ -118,17 +118,17 @@
                     backgroundColor: "rgb(255, 99, 132)",
                     borderColor: "rgb(255, 99, 132)",
         <% Chart chart = (Chart) request.getAttribute("charts");
-                    String[] months = chart.getMonthDetection().split(",");
-                    String[] detections = chart.getMonthlyDetection().split(",");
-                    String[] dataChart = "0,0,0,0,0,0,0,0,0,0,0,0".split(",");
-                    for (String dx : months) {
-                        Integer count = 0;
-                        dataChart[Integer.parseInt(dx) - 1] = detections[count];
-                        count++;
-                    }
-                    String data = Arrays.toString(dataChart);
+            String[] months = chart.getMonthDetection().split(",");
+            String[] detections = chart.getMonthlyDetection().split(",");
+            String[] dataChart = "0,0,0,0,0,0,0,0,0,0,0,0".split(",");
+            Integer count = 0;
+            for (String dx : months) {
+                dataChart[Integer.parseInt(dx) - 1] = detections[count];
+                count++;
+            }
+            String data = Arrays.toString(dataChart);
         %>
-                    data: <%= data  %>,
+                    data: <%= data%>,
                 },
             ],
         };
